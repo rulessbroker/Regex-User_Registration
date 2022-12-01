@@ -16,4 +16,14 @@ public class UserRegistration {
 			System.out.println("first name pattern is not matched");
 		}
 	}
+
+	public void checkLastName() {
+		System.out.println("Enter Last name start with Capital letter : ");
+		String lastName = sc.nextLine();
+		if (Pattern.matches("^[A-Z]{1}[a-z]{2,}", lastName)) {
+			System.out.println("Last name is regestried sucessfully");
+		} else {
+			System.out.println("Last name pattern is not matched");
+		}
+	}
 }

@@ -7,5 +7,7 @@ public class UserRegistrationMain {
 
 		input.checkFirstName();
 
+		input.checkLastName();
+
 	}
 }
