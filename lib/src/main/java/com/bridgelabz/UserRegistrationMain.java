@@ -11,7 +11,7 @@ public class UserRegistrationMain {
 		int choice;
 		do {
 			System.out.println(
-					"***User Registration***\n1.Enter First Name\n2.Enter Last Name\n3.Enter Email\n4.Enter Phone Number\n5.Exit\nEnter Your Choice : ");
+					"***User Registration***\n1.Enter First Name\n2.Enter Last Name\n3.Enter Email\n4.Enter Phone Number\n5.Password\n6.Exit\nEnter Your Choice : ");
 			choice = sc.nextInt();
 			switch (choice) {
 			case 1:
@@ -27,11 +27,15 @@ public class UserRegistrationMain {
 				input.checkPhoneNo();
 				break;
 			case 5:
+				input.checkPassword();
+				break;
+			case 6:
 				System.out.println("Exited Successfully!!!");
+				break;
 			default:
 				System.out.println("Enter Valid input!");
 			}
-		} while (choice != 5);
+		} while (choice != 6);
 
 	}
 }
