@@ -36,4 +36,14 @@ public class UserRegistration {
 			System.out.println("Email pattern is not matched");
 		}
 	}
+
+	public void checkPhoneNo() {
+		System.out.println("Enter Phone No : ");
+		String phoneNo = sc.nextLine();
+		if (Pattern.matches("^(91)?\\s{0,1}[1-9]{1}[0-9]{9}$", phoneNo)) {
+			System.out.println("Phone Number is regestried sucessfully");
+		} else {
+			System.out.println("Phone Number pattern is not matched");
+		}
+	}
 }
