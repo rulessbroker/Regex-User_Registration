@@ -50,7 +50,7 @@ public class UserRegistration {
 	public void checkPassword() {
 		System.out.println("Enter Password : ");
 		String password = sc.nextLine();
-		if (Pattern.matches("^.*(?=.{8,})(?=.*[a-z])(?=.*[A-Z]).*$", password)) {
+		if (Pattern.matches("^.*(?=.{8,})(?=..*[0-9])(?=.*[a-z])(?=.*[A-Z]).*$", password)) {
 			System.out.println("password is regestried sucessfully");
 		} else {
 			System.out.println("password pattern is not matched");
