@@ -15,19 +15,19 @@ public class UserRegistrationMain {
 			choice = sc.nextInt();
 			switch (choice) {
 			case 1:
-				input.checkFirstName();
+				input.checkFirstName(sc.nextLine());
 				break;
 			case 2:
-				input.checkLastName();
+				input.checkLastName(sc.nextLine());
 				break;
 			case 3:
-				input.checkEmail();
+				input.checkEmail(sc.nextLine());
 				break;
 			case 4:
-				input.checkPhoneNo();
+				input.checkPhoneNo(sc.nextLine());
 				break;
 			case 5:
-				input.checkPassword();
+				input.checkPassword(sc.nextLine());
 				break;
 			case 6:
 				System.out.println("Exited Successfully!!!");
