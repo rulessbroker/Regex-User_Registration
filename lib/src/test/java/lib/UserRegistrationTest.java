@@ -20,32 +20,32 @@ class UserRegistrationTest {
 
 	@Test
 	public void givenFirstName_WhenValid_ShouldReturnsTrue() throws InvalidUserDetailsException {
-		boolean result = userRegistration.checkFirstName("Abc");
+		boolean result = userRegistration.firstName.validate("Abc");
 		Assertions.assertTrue(result);
 	}
 	
 
 	@Test
 	public void givenLastName_WhenValid_ShouldReturnTrue() throws InvalidUserDetailsException {
-		boolean result = userRegistration.checkLastName("Xyz");
+		boolean result = userRegistration.lastName.validate("Xyz");
 		Assertions.assertTrue(result);
 	}
 
 	@Test
 	public void givenEmail_WhenValid_ShouldReturnTrue() throws InvalidUserDetailsException {
-		boolean result = userRegistration.checkEmail("abc.def@xyz.co.in");
+		boolean result = userRegistration.email.validate("abc.def@xyz.co.in");
 		Assertions.assertTrue(result);
 	}
 
 	@Test
 	public void givenMobileNumber_WhenValid_ShouldReturnTrue() throws InvalidUserDetailsException {
-		boolean result = userRegistration.checkPhoneNo("91 9874561230");
+		boolean result = userRegistration.phoneNo.validate("91 9874561230");
 		Assertions.assertTrue(result);
 	}
 
 	@Test
 	public void givenPassword_WhenValid_ShouldReturnTrue() throws InvalidUserDetailsException {
-		boolean result = userRegistration.checkPassword("A54tbh15@");
+		boolean result = userRegistration.password.validate("A54tbh15@");
 		Assertions.assertTrue(result);
 	}
 

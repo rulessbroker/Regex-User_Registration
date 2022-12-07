@@ -3,7 +3,7 @@ package com.bridgelabz;
 import java.util.Scanner;
 
 public class UserRegistrationMain {
-	public static void main(String[] args) throws InvalidUserDetailsException{
+	public static void main(String[] args) throws InvalidUserDetailsException {
 
 		UserRegistration input = new UserRegistration();
 
@@ -15,19 +15,19 @@ public class UserRegistrationMain {
 			choice = sc.nextInt();
 			switch (choice) {
 			case 1:
-				input.checkFirstName(sc.nextLine());
+				input.firstName.validate(sc.nextLine());
 				break;
 			case 2:
-				input.checkLastName(sc.nextLine());
+				input.lastName.validate(sc.nextLine());
 				break;
 			case 3:
-				input.checkEmail(sc.nextLine());
+				input.email.validate(sc.nextLine());
 				break;
 			case 4:
-				input.checkPhoneNo(sc.nextLine());
+				input.phoneNo.validate(sc.nextLine());
 				break;
 			case 5:
-				input.checkPassword(sc.nextLine());
+				input.password.validate(sc.nextLine());
 				break;
 			case 6:
 				System.out.println("Exited Successfully!!!");

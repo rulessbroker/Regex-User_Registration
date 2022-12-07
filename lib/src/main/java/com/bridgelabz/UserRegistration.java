@@ -7,7 +7,7 @@ public class UserRegistration {
 
 	Scanner sc = new Scanner(System.in);
 
-	public boolean checkFirstName(String firstName) throws InvalidUserDetailsException {
+	public Validator firstName = (firstName) -> {
 		System.out.println("Enter first name start with Capital letter :");
 		firstName = sc.nextLine();
 		if (Pattern.matches("^[A-Z]{1}[a-z]{2,}", firstName)) {
@@ -16,9 +16,9 @@ public class UserRegistration {
 		} else {
 			throw new InvalidUserDetailsException("Invalid First Name => " + firstName);
 		}
-	}
+	};
 
-	public boolean checkLastName(String lastName) throws InvalidUserDetailsException {
+	public Validator lastName = (lastName) -> {
 		System.out.println("Enter Last name start with Capital letter : ");
 		lastName = sc.nextLine();
 		if (Pattern.matches("^[A-Z]{1}[a-z]{2,}", lastName)) {
@@ -28,9 +28,9 @@ public class UserRegistration {
 			throw new InvalidUserDetailsException("Invalid Last Name => " + lastName);
 
 		}
-	}
+	};
 
-	public boolean checkEmail(String email) throws InvalidUserDetailsException {
+	public Validator email = (email) -> {
 		System.out.println("Enter Email : ");
 		email = sc.nextLine();
 		if (Pattern.matches(
@@ -41,9 +41,9 @@ public class UserRegistration {
 			throw new InvalidUserDetailsException("Invalid email => " + email);
 		}
 
-	}
+	};
 
-	public boolean checkPhoneNo(String phoneNo) throws InvalidUserDetailsException {
+	public Validator phoneNo = (phoneNo) -> {
 		System.out.println("Enter Phone No : ");
 		phoneNo = sc.nextLine();
 		if (Pattern.matches("^([1-9]{1}[0-9])?\\s{0,1}[1-9]{1}[0-9]{9}$", phoneNo)) {
@@ -52,9 +52,9 @@ public class UserRegistration {
 		} else {
 			throw new InvalidUserDetailsException("Invalid Mobile Number => " + phoneNo);
 		}
-	}
+	};
 
-	public boolean checkPassword(String password) throws InvalidUserDetailsException {
+	public Validator password = (password) -> {
 		System.out.println("Enter Password : ");
 		password = sc.nextLine();
 		boolean isValid = validatePassRule1(password);
@@ -71,7 +71,7 @@ public class UserRegistration {
 			}
 		}
 		return false;
-	}
+	};
 
 	boolean validatePassRule1(String password) throws InvalidUserDetailsException {
 		Pattern pattern = Pattern.compile("^.*(?=.{8,}).*$");
