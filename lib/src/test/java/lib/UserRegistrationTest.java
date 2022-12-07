@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import com.bridgelabz.InvalidUserDetailsException;
 import com.bridgelabz.UserRegistration;
 
 class UserRegistrationTest {
@@ -18,31 +19,32 @@ class UserRegistrationTest {
 	}
 
 	@Test
-	public void givenFirstName_WhenValid_ShouldReturnsTrue() {
+	public void givenFirstName_WhenValid_ShouldReturnsTrue() throws InvalidUserDetailsException {
 		boolean result = userRegistration.checkFirstName("Abc");
 		Assertions.assertTrue(result);
 	}
+	
 
 	@Test
-	public void givenLastName_WhenValid_ShouldReturnTrue() {
+	public void givenLastName_WhenValid_ShouldReturnTrue() throws InvalidUserDetailsException {
 		boolean result = userRegistration.checkLastName("Xyz");
 		Assertions.assertTrue(result);
 	}
 
 	@Test
-	public void givenEmail_WhenValid_ShouldReturnTrue() {
-		boolean result = userRegistration.checkEmail("Abc.def@xyz.co.in");
+	public void givenEmail_WhenValid_ShouldReturnTrue() throws InvalidUserDetailsException {
+		boolean result = userRegistration.checkEmail("abc.def@xyz.co.in");
 		Assertions.assertTrue(result);
 	}
 
 	@Test
-	public void givenMobileNumber_WhenValid_ShouldReturnTrue() {
+	public void givenMobileNumber_WhenValid_ShouldReturnTrue() throws InvalidUserDetailsException {
 		boolean result = userRegistration.checkPhoneNo("91 9874561230");
 		Assertions.assertTrue(result);
 	}
 
 	@Test
-	public void givenPassword_WhenValid_ShouldReturnTrue() {
+	public void givenPassword_WhenValid_ShouldReturnTrue() throws InvalidUserDetailsException {
 		boolean result = userRegistration.checkPassword("A54tbh15@");
 		Assertions.assertTrue(result);
 	}

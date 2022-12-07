@@ -7,31 +7,30 @@ public class UserRegistration {
 
 	Scanner sc = new Scanner(System.in);
 
-	public boolean checkFirstName(String firstName) {
+	public boolean checkFirstName(String firstName) throws InvalidUserDetailsException {
 		System.out.println("Enter first name start with Capital letter :");
 		firstName = sc.nextLine();
 		if (Pattern.matches("^[A-Z]{1}[a-z]{2,}", firstName)) {
 			System.out.println("first name is regestried sucessfully");
 			return true;
 		} else {
-			System.out.println("first name pattern is not matched");
-			return false;
+			throw new InvalidUserDetailsException("Invalid First Name => " + firstName);
 		}
 	}
 
-	public boolean checkLastName(String lastName) {
+	public boolean checkLastName(String lastName) throws InvalidUserDetailsException {
 		System.out.println("Enter Last name start with Capital letter : ");
 		lastName = sc.nextLine();
 		if (Pattern.matches("^[A-Z]{1}[a-z]{2,}", lastName)) {
 			System.out.println("Last name is regestried sucessfully");
 			return true;
 		} else {
-			System.out.println("Last name pattern is not matched");
-			return false;
+			throw new InvalidUserDetailsException("Invalid Last Name => " + lastName);
+
 		}
 	}
 
-	public boolean checkEmail(String email) {
+	public boolean checkEmail(String email) throws InvalidUserDetailsException {
 		System.out.println("Enter Email : ");
 		email = sc.nextLine();
 		if (Pattern.matches(
@@ -39,33 +38,81 @@ public class UserRegistration {
 			System.out.println("Email is regestried sucessfully");
 			return true;
 		} else {
-			System.out.println("Email pattern is not matched");
-			return false;
+			throw new InvalidUserDetailsException("Invalid email => " + email);
 		}
 
 	}
 
-	public boolean checkPhoneNo(String phoneNo) {
+	public boolean checkPhoneNo(String phoneNo) throws InvalidUserDetailsException {
 		System.out.println("Enter Phone No : ");
 		phoneNo = sc.nextLine();
 		if (Pattern.matches("^([1-9]{1}[0-9])?\\s{0,1}[1-9]{1}[0-9]{9}$", phoneNo)) {
 			System.out.println("Phone Number is regestried sucessfully");
 			return true;
 		} else {
-			System.out.println("Phone Number pattern is not matched");
-			return false;
+			throw new InvalidUserDetailsException("Invalid Mobile Number => " + phoneNo);
 		}
 	}
 
-	public boolean checkPassword(String password) {
+	public boolean checkPassword(String password) throws InvalidUserDetailsException {
 		System.out.println("Enter Password : ");
 		password = sc.nextLine();
-		if (Pattern.matches("^.*(?=.{8,})(?=..*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=.-_!]).*$", password)) {
-			System.out.println("password is regestried sucessfully");
+		boolean isValid = validatePassRule1(password);
+		if (isValid) {
+			isValid = validatePassRule2(password);
+			if (isValid) {
+				isValid = validatePassRule3(password);
+				if (isValid) {
+					isValid = validatePassRule4(password);
+					if (isValid) {
+						return true;
+					}
+				}
+			}
+		}
+		return false;
+	}
+
+	boolean validatePassRule1(String password) throws InvalidUserDetailsException {
+		Pattern pattern = Pattern.compile("^.*(?=.{8,}).*$");
+		Boolean isValid = pattern.matcher(password).matches();
+		if (isValid) {
 			return true;
 		} else {
-			System.out.println("password pattern is not matched");
-			return false;
+			throw new InvalidUserDetailsException("Invalid Password => Password must have minimum 8 characters");
+		}
+	}
+
+	boolean validatePassRule2(String password) throws InvalidUserDetailsException {
+		Pattern pattern = Pattern.compile("^.*(?=.*[A-Z])(?=.{8,}).*$");
+		Boolean isValid = pattern.matcher(password).matches();
+		if (isValid) {
+			return true;
+		} else {
+			throw new InvalidUserDetailsException(
+					"Invalid Password => password must have at least one uppercase letter");
+		}
+	}
+
+	boolean validatePassRule3(String password) throws InvalidUserDetailsException {
+		// At least one upperCase letter
+		Pattern pattern = Pattern.compile("^.*(?=.*[A-Z])(?=.*[0-9])(?=.{8,}).*$");
+		Boolean isValid = pattern.matcher(password).matches();
+		if (isValid) {
+			return true;
+		} else {
+			throw new InvalidUserDetailsException("Invalid Password => password must have at least numeric letter");
+		}
+	}
+
+	boolean validatePassRule4(String password) throws InvalidUserDetailsException {
+		// At least one upperCase letter
+		Pattern pattern = Pattern.compile("^.*(?=.{8,})(?=..*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=.-_!]).*$");
+		Boolean isValid = pattern.matcher(password).matches();
+		if (isValid) {
+			return true;
+		} else {
+			throw new InvalidUserDetailsException("Invalid Password => password must have one special character");
 		}
 	}
 }

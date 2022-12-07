@@ -3,7 +3,7 @@ package com.bridgelabz;
 import java.util.Scanner;
 
 public class UserRegistrationMain {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InvalidUserDetailsException{
 
 		UserRegistration input = new UserRegistration();
 
